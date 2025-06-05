@@ -7,7 +7,8 @@ export class ClienteController {
     crearCliente = (req: Request, res: Response) => {
         const nuevaCliente = new Cliente(
             {
-                cliente: req.body.cliente
+                cliente: req.body.cliente,
+                telefono: req.body.telefono
             }
         );
 
@@ -46,7 +47,8 @@ export class ClienteController {
 
     actualizarCliente = (req: Request, res: Response) => {
         Cliente.findByIdAndUpdate(req.params.id, {
-            cliente: req.body.cliente
+            cliente: req.body.cliente,
+            telefono: req.body.telefono
         })
         .then(clienteActualizada => {
             res.status(200).json({
