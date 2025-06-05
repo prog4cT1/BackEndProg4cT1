@@ -31,7 +31,7 @@ export class ClienteController {
     obtenerClientes = (req: Request, res: Response) => {
         Cliente.find()
         .then(clientes => {
-            res.statu(200).json({
+            res.status(200).json({
                 ok: true,
                 clientes: clientes
             });

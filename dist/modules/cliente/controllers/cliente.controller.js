@@ -6,7 +6,8 @@ class ClienteController {
     constructor() {
         this.crearCliente = (req, res) => {
             const nuevaCliente = new cliente_model_1.default({
-                cliente: req.body.cliente
+                cliente: req.body.cliente,
+                telefono: req.body.telefono
             });
             nuevaCliente.save()
                 .then(clienteCreada => {
@@ -26,7 +27,7 @@ class ClienteController {
         this.obtenerClientes = (req, res) => {
             cliente_model_1.default.find()
                 .then(clientes => {
-                res.statu(200).json({
+                res.status(200).json({
                     ok: true,
                     clientes: clientes
                 });
@@ -40,7 +41,8 @@ class ClienteController {
         };
         this.actualizarCliente = (req, res) => {
             cliente_model_1.default.findByIdAndUpdate(req.params.id, {
-                cliente: req.body.cliente
+                cliente: req.body.cliente,
+                telefono: req.body.telefono
             })
                 .then(clienteActualizada => {
                 res.status(200).json({
